@@ -25,13 +25,14 @@ export default Component.extend({
   tagName: 'ol',
   linkable: true,
   reverse: false,
+  breadCrumb: null,
   classNameBindings: ['breadCrumbClass'],
   hasBlock: bool('template').readOnly(),
   routing: service('-routing'),
   currentUrl: readOnly('routing.router.currentURL'),
   currentRouteName: readOnly('routing.router.currentRouteName'),
 
-  routeHierarchy: computed('currentUrl', 'currentRouteName', 'reverse', {
+  routeHierarchy: computed('currentUrl', 'currentRouteName', 'reverse', 'breadCrumb', {
     get() {
       get(this, 'currentUrl');
       const currentRouteName = getWithDefault(this, 'currentRouteName', false);
